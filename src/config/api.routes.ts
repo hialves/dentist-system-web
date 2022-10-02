@@ -1,0 +1,18 @@
+export const apiRoutes = {
+  budget: '/budget',
+  budgetItem: '/budget-item',
+  client: '/client',
+  clientProcedure: '/clientProcedure',
+  clinic: '/clinic',
+  employee: '/employee',
+  employeeClinic: '/employee-clinic',
+  exams: '/exams',
+  stock: '/stock',
+  stockCategory: '/stock-category',
+  permission: '/permission',
+  procedure: '/procedure',
+  procedureHistory: '/procedure-history',
+  role: '/role',
+  rolePermission: '/role-permission',
+  tenant: '/tenant',
+}
