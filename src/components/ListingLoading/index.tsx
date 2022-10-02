@@ -6,7 +6,7 @@ interface Props {
 }
 
 export const ListingLoading: React.FC<Props> = ({ loading = false }) => {
-  return !loading ? (
+  return loading ? (
     <Progress size="xs" isIndeterminate mt={3} mb={3} colorScheme={'teal'} />
   ) : (
     <div
