@@ -1,15 +1,15 @@
 import { Button, Divider, Flex, useToast } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import AuthLayout from '../../../components/AuthLayout'
-import { open } from '../../../router/routes'
-import { useAuth } from '../../../contexts/auth'
-import { showToast } from '../../../utils/toast'
+import AuthLayout from '../../../../components/AuthLayout'
+import { open } from '../../../../router/routes'
+import { useAuth } from '../../../../contexts/auth'
+import { showToast } from '../../../../utils/toast'
 import EmployeeStep from './EmployeeStep'
 import CompanyStep from './CompanyStep'
-import { CreateTenantPayload, TenantApi } from '../../../api/Tenant'
+import { CreateTenantPayload, TenantApi } from '../../../../api/Tenant'
 
-const SignUp: React.FC = () => {
+export const SignUpTenant: React.FC = () => {
   const toast = useToast()
   const navigate = useNavigate()
   const { signed, goToSignedPage } = useAuth()
@@ -170,5 +170,3 @@ const SignUp: React.FC = () => {
     </AuthLayout>
   )
 }
-
-export default SignUp

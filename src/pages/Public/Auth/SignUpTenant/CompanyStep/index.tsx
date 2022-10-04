@@ -7,7 +7,7 @@ import {
 } from '@chakra-ui/react'
 import React, { useRef } from 'react'
 import { FiFile } from 'react-icons/fi'
-import { ChangeState, HtmlEvent } from '../../../../common/app.types'
+import { ChangeState, HtmlEvent } from '../../../../../common/app.types'
 
 interface Props {
   companyName: string

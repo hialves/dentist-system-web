@@ -10,14 +10,14 @@ import {
 } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import { EmailIcon, LockIcon, ViewIcon, ViewOffIcon } from '@chakra-ui/icons'
-import { HtmlEvent } from '../../../common/app.types'
+import { HtmlEvent } from '../../../../common/app.types'
 import { useNavigate, useParams } from 'react-router-dom'
-import AuthLayout from '../../../components/AuthLayout'
-import { useAuth } from '../../../contexts/auth'
-import { showToast } from '../../../utils/toast'
-import { open } from '../../../router/routes'
+import AuthLayout from '../../../../components/AuthLayout'
+import { useAuth } from '../../../../contexts/auth'
+import { showToast } from '../../../../utils/toast'
+import { open } from '../../../../router/routes'
 
-const SignIn: React.FC = () => {
+export const SignIn: React.FC = () => {
   const navigate = useNavigate()
   const toast = useToast()
   const { signed, signIn, goToSignedPage } = useAuth()
@@ -131,5 +131,3 @@ const SignIn: React.FC = () => {
     </AuthLayout>
   )
 }
-
-export default SignIn

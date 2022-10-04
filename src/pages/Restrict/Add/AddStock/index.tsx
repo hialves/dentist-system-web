@@ -1,5 +1,5 @@
 import React from 'react'
-import { NotFound } from '../../NotFound'
+import { NotFound } from '../../../../components/NotFound'
 
 export const AddStock: React.FC = () => {
   return <NotFound />

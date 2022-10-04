@@ -1,28 +1,28 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import SidebarWithHeader from '../components/Sidebar'
-import Dashboard from '../pages/Dashboard'
-import Settings from '../pages/Settings'
-import SignIn from '../pages/Auth/SignIn'
-import SignUp from '../pages/Auth/SignUp'
-import Landing from '../pages/Landing'
-import { NotFound } from '../pages/NotFound'
+import Dashboard from '../pages/Restrict/Dashboard'
+import Settings from '../pages/Restrict/Settings'
+import { SignIn } from '../pages/Public/Auth/SignIn'
+import { SignUpTenant } from '../pages/Public/Auth/SignUpTenant'
+import { Landing } from '../pages/Public/Landing'
+import { NotFound } from '../components/NotFound'
 import { prefixPrivateRoute, open, restrict } from './routes'
-import Stocks from '../pages/Listing/Stocks'
-import { Clinics } from '../pages/Listing/Clinics'
-import { Clients } from '../pages/Listing/Clients'
-import { Employees } from '../pages/Listing/Employees'
-import { AddClient } from '../pages/Add/AddClient'
-import { AddClinic } from '../pages/Add/AddClinic'
-import { AddEmployee } from '../pages/Add/AddEmployee'
-import { AddStock } from '../pages/Add/AddStock'
+import { Stocks } from '../pages/Restrict/Listing/Stocks'
+import { Clinics } from '../pages/Restrict/Listing/Clinics'
+import { Clients } from '../pages/Restrict/Listing/Clients'
+import { Employees } from '../pages/Restrict/Listing/Employees'
+import { AddClient } from '../pages/Restrict/Add/AddClient'
+import { AddClinic } from '../pages/Restrict/Add/AddClinic'
+import { AddEmployee } from '../pages/Restrict/Add/AddEmployee'
+import { AddStock } from '../pages/Restrict/Add/AddStock'
 
 const Router: React.FC = () => {
   return (
     <Routes>
       <Route path={open.index} element={<Landing />} />
       <Route path={open.signIn} element={<SignIn />} />
-      <Route path={open.signUpTenant} element={<SignUp />} />
+      <Route path={open.signUpTenant} element={<SignUpTenant />} />
 
       <Route path={`/${prefixPrivateRoute}`} element={<SidebarWithHeader />}>
         <Route path={restrict.client} element={<Clients />} />

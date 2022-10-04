@@ -1,6 +1,6 @@
 import { Input, Text } from '@chakra-ui/react'
 import React from 'react'
-import { ChangeState, HtmlEvent } from '../../../../common/app.types'
+import { ChangeState, HtmlEvent } from '../../../../../common/app.types'
 
 interface Props {
   ownerName: string

@@ -1,8 +1,8 @@
 import React from 'react'
-import { LandingLayout } from '../../components/LandingLayout'
-import { Hero } from '../../components/Hero'
+import { LandingLayout } from '../../../components/LandingLayout'
+import { Hero } from '../../../components/Hero'
 
-const Landing: React.FC = () => {
+export const Landing: React.FC = () => {
   return (
     <LandingLayout>
       <Hero
@@ -15,5 +15,3 @@ const Landing: React.FC = () => {
     </LandingLayout>
   )
 }
-
-export default Landing
