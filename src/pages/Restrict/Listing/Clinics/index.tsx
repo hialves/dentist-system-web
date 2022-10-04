@@ -22,7 +22,7 @@ export const Clinics: React.FC = () => {
   const config = {
     title: 'Clínicas vinculadas',
     addText: 'Adicionar nova clínica',
-    goToAddRoute: restrict.clinic,
+    goToAddRoute: restrict.clinicAdd,
   }
   const toast = useToast()
   const navigate = useNavigate()

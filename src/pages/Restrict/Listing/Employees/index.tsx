@@ -22,7 +22,7 @@ export const Employees: React.FC = () => {
   const config = {
     title: 'Colaboradores',
     addText: 'Registrar novo colaborador',
-    goToAddRoute: restrict.employee,
+    goToAddRoute: restrict.employeeAdd,
   }
   const toast = useToast()
   const navigate = useNavigate()

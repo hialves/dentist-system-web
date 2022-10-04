@@ -22,7 +22,7 @@ export const Clients: React.FC = () => {
   const config = {
     title: 'Clientes',
     addText: 'Registrar novo cliente',
-    goToAddRoute: restrict.client,
+    goToAddRoute: restrict.clientAdd,
   }
   const toast = useToast()
   const navigate = useNavigate()
