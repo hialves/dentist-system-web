@@ -10,25 +10,25 @@ import {
   useToast,
 } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom'
-import { ChangeState } from '../../common/app.types'
-import { showToast } from '../../utils/toast'
-import { restrict } from '../../router/routes'
-import { ClinicApi, IClinic } from '../../api/Clinic'
-import { ActionButtons } from '../../components/ActionButtons'
-import { ListingLayout } from '../../components/ListingLayout'
-import { ListingLoading } from '../../components/ListingLoading'
+import { ChangeState } from '../../../common/app.types'
+import { showToast } from '../../../utils/toast'
+import { restrict } from '../../../router/routes'
+import { ActionButtons } from '../../../components/ActionButtons'
+import { ClientApi, IClient } from '../../../api/Client'
+import { ListingLayout } from '../../../components/ListingLayout'
+import { ListingLoading } from '../../../components/ListingLoading'
 
-export const Clinics: React.FC = () => {
+export const Clients: React.FC = () => {
   const config = {
-    title: 'Clínicas vinculadas',
-    addText: 'Adicionar nova clínica',
-    goToAddRoute: restrict.clinic,
+    title: 'Clientes',
+    addText: 'Registrar novo cliente',
+    goToAddRoute: restrict.client,
   }
   const toast = useToast()
   const navigate = useNavigate()
 
   const [loading, setLoading] = useState(false)
-  const [data, setData] = useState<IClinic[]>([])
+  const [data, setData] = useState<IClient[]>([])
 
   useEffect(() => {
     fetchData()
@@ -36,7 +36,7 @@ export const Clinics: React.FC = () => {
 
   async function fetchData() {
     setLoading(true)
-    const response = await ClinicApi.findAll().finally(() => setLoading(false))
+    const response = await ClientApi.findAll().finally(() => setLoading(false))
 
     setData(response)
   }
@@ -51,7 +51,7 @@ export const Clinics: React.FC = () => {
   ) {
     setLoadingDelete(true)
 
-    await ClinicApi.delete(id).catch((e: any) => {
+    await ClientApi.delete(id).catch((e: any) => {
       setLoadingDelete(false)
       showToast(toast, e.message, 'error')
     })

@@ -10,25 +10,25 @@ import {
   useToast,
 } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom'
-import { ChangeState } from '../../common/app.types'
-import { showToast } from '../../utils/toast'
-import { IStock, StockApi } from '../../api/Stock'
-import { restrict } from '../../router/routes'
-import { ActionButtons } from '../../components/ActionButtons'
-import { ListingLayout } from '../../components/ListingLayout'
-import { ListingLoading } from '../../components/ListingLoading'
+import { ChangeState } from '../../../common/app.types'
+import { showToast } from '../../../utils/toast'
+import { restrict } from '../../../router/routes'
+import { ActionButtons } from '../../../components/ActionButtons'
+import { ListingLayout } from '../../../components/ListingLayout'
+import { EmployeeApi, IEmployee } from '../../../api/Employee'
+import { ListingLoading } from '../../../components/ListingLoading'
 
-const Stocks: React.FC = () => {
+export const Employees: React.FC = () => {
   const config = {
-    title: 'Estoque de materiais',
-    addText: 'Adicionar ao estoque',
-    goToAddRoute: restrict.stockAdd,
+    title: 'Colaboradores',
+    addText: 'Registrar novo colaborador',
+    goToAddRoute: restrict.employee,
   }
   const toast = useToast()
   const navigate = useNavigate()
 
   const [loading, setLoading] = useState(false)
-  const [data, setData] = useState<IStock[]>([])
+  const [data, setData] = useState<IEmployee[]>([])
 
   useEffect(() => {
     fetchData()
@@ -36,13 +36,15 @@ const Stocks: React.FC = () => {
 
   async function fetchData() {
     setLoading(true)
-    const response = await StockApi.findAll().finally(() => setLoading(false))
+    const response = await EmployeeApi.findAll().finally(() =>
+      setLoading(false)
+    )
 
     setData(response)
   }
 
   function goToAdd() {
-    navigate(restrict.stockAdd)
+    navigate(config.goToAddRoute)
   }
 
   async function handleDelete(
@@ -51,7 +53,7 @@ const Stocks: React.FC = () => {
   ) {
     setLoadingDelete(true)
 
-    await StockApi.delete(id).catch((e: any) => {
+    await EmployeeApi.delete(id).catch((e: any) => {
       setLoadingDelete(false)
       showToast(toast, e.message, 'error')
     })
@@ -73,7 +75,6 @@ const Stocks: React.FC = () => {
           <Thead>
             <Tr>
               <Th>Nome</Th>
-              <Th>Categoria</Th>
               <Th>Criado em</Th>
               <Th>Atualizado em</Th>
               <Th>Ações</Th>
@@ -84,6 +85,7 @@ const Stocks: React.FC = () => {
               {data.map((item) => {
                 const createdAt = new Date(item.createdAt)
                 const updatedAt = new Date(item.createdAt)
+
                 return (
                   <Tr key={item.id}>
                     <Td>{item.name}</Td>
@@ -96,7 +98,11 @@ const Stocks: React.FC = () => {
                       {updatedAt.toLocaleTimeString()}
                     </Td>
                     <Td>
-                      <ActionButtons id={item.id} handleDelete={handleDelete} />
+                      <ActionButtons
+                        id={item.id}
+                        handleDelete={handleDelete}
+                        isSoftDelete
+                      />
                     </Td>
                   </Tr>
                 )
@@ -108,5 +114,3 @@ const Stocks: React.FC = () => {
     </ListingLayout>
   )
 }
-
-export default Stocks
