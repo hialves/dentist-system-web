@@ -96,11 +96,7 @@ export const Clients: React.FC = () => {
                       {updatedAt.toLocaleTimeString()}
                     </Td>
                     <Td>
-                      <ActionButtons
-                        id={item.id}
-                        handleDelete={handleDelete}
-                        isSoftDelete
-                      />
+                      <ActionButtons id={item.id} handleDelete={handleDelete} />
                     </Td>
                   </Tr>
                 )

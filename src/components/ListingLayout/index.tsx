@@ -1,6 +1,6 @@
 import { Box, Flex } from '@chakra-ui/react'
 import React from 'react'
-import { CreateEntityButton } from '../CreateEntityButton'
+import { GoToCreateEntityButton } from '../GoToCreateEntityButton'
 import TitleWindow from '../TitleWindow'
 
 interface Props {
@@ -21,7 +21,7 @@ export const ListingLayout: React.FC<Props> = ({
       <Flex flex={1} justifyContent={'space-between'} alignItems={'center'}>
         <TitleWindow title={title} />
 
-        <CreateEntityButton addText={addText} goToAdd={goToAdd} />
+        <GoToCreateEntityButton addText={addText} goToAdd={goToAdd} />
       </Flex>
       {children}
     </Box>

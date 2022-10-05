@@ -7,7 +7,7 @@ interface Props {
   addText?: string
 }
 
-export const CreateEntityButton: React.FC<Props> = ({
+export const GoToCreateEntityButton: React.FC<Props> = ({
   addText = '',
   goToAdd,
 }) => {

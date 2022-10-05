@@ -15,8 +15,13 @@ export interface IClient {
 const prefix = apiRoutes.client
 
 export const ClientApi = {
-  create: async () => {
-    // return api.post(`${prefix}`)
+  create: async (payload: {
+    name: string | undefined
+    email: string | undefined
+    document?: string
+    phone?: string
+  }) => {
+    return api.post(`${prefix}`, payload)
   },
   findAll: async (): Promise<IClient[]> => {
     return api.get(`${prefix}`)

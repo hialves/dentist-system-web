@@ -16,8 +16,13 @@ export interface IClinic {
 const prefix = apiRoutes.clinic
 
 export const ClinicApi = {
-  create: async () => {
-    // return api.post(`${prefix}`)
+  create: async (payload: {
+    name: string | undefined
+    document: string | undefined
+    phone?: string
+    address?: string
+  }) => {
+    return api.post(`${prefix}`, payload)
   },
   findAll: async (): Promise<IClinic[]> => {
     return api.get(`${prefix}`)
