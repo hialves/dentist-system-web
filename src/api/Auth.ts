@@ -28,4 +28,7 @@ export const AuthApi = {
 
     return api.post('/auth/employee/register', finalPayload)
   },
+  finalizeLogin: async (clinicId: number): Promise<{ accessToken: string }> => {
+    return api.post('/auth/employee/finalize-login', { clinicId })
+  },
 }

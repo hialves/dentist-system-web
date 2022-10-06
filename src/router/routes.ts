@@ -7,6 +7,7 @@ interface IOpen {
 interface IRestrict {
   clinic: string
   clinicAdd: string
+  selectClinic: string
   client: string
   clientAdd: string
   dashboard: string
@@ -31,6 +32,7 @@ const routes: IRoutes = {
   restrict: {
     clinic: '/clinic',
     clinicAdd: '/clinic/add',
+    selectClinic: '/clinic/select',
     client: '/client',
     clientAdd: '/client/add',
     dashboard: '/dashboard',

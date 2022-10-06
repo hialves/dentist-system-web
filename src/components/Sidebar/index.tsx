@@ -29,15 +29,25 @@ import { Logo } from '../../Logo'
 import { Outlet, useNavigate, Link as ReactRouter } from 'react-router-dom'
 import { useAuth } from '../../contexts/auth'
 import { open, restrict } from '../../router/routes'
-import { LinkItems } from '../../config/sidebar.config'
+import { LinkItemsClinic, LinkItemsNoClinic } from '../../config/sidebar.config'
 
 export default function SidebarWithHeader() {
   const navigate = useNavigate()
-  const { signed } = useAuth()
+  const { signed, getProfile, profile } = useAuth()
   const { isOpen, onOpen, onClose } = useDisclosure()
 
   useEffect(() => {
     if (window.location.pathname === '/app') navigate(restrict.dashboard)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  useEffect(() => {
+    async function _getProfile() {
+      if (!profile) {
+        await getProfile()
+      }
+    }
+    _getProfile()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
@@ -88,12 +98,46 @@ interface SidebarProps extends BoxProps {
 }
 
 const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
+  const { clinicId } = useAuth()
+  const bg = useColorModeValue('white', 'gray.900')
+  const borderRightColor = useColorModeValue('gray.200', 'gray.700')
+
+  if (clinicId) {
+    return (
+      <Box
+        transition="3s ease"
+        bg={bg}
+        borderRight="1px"
+        borderRightColor={borderRightColor}
+        w={{ base: 'full', md: 60 }}
+        pos="fixed"
+        h="full"
+        {...rest}
+      >
+        <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
+          <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
+            <Logo />
+          </Text>
+          <CloseButton
+            display={{ base: 'flex', md: 'none' }}
+            onClick={onClose}
+          />
+        </Flex>
+        {LinkItemsClinic.map((link) => (
+          <NavItem key={link.name} icon={link.icon} link={link.to}>
+            {link.name}
+          </NavItem>
+        ))}
+      </Box>
+    )
+  }
+
   return (
     <Box
       transition="3s ease"
-      bg={useColorModeValue('white', 'gray.900')}
+      bg={bg}
       borderRight="1px"
-      borderRightColor={useColorModeValue('gray.200', 'gray.700')}
+      borderRightColor={borderRightColor}
       w={{ base: 'full', md: 60 }}
       pos="fixed"
       h="full"
@@ -105,7 +149,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
         </Text>
         <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
       </Flex>
-      {LinkItems.map((link) => (
+      {LinkItemsNoClinic.map((link) => (
         <NavItem key={link.name} icon={link.icon} link={link.to}>
           {link.name}
         </NavItem>
@@ -160,7 +204,7 @@ interface MobileProps extends FlexProps {
   onOpen: () => void
 }
 const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
-  const { signOut } = useAuth()
+  const { signOut, profile } = useAuth()
   return (
     <Flex
       ml={{ base: 0, md: 60 }}
@@ -217,7 +261,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
                   spacing="1px"
                   ml="2"
                 >
-                  <Text fontSize="sm">Justina Clark</Text>
+                  <Text fontSize="sm">{profile?.name}</Text>
                   <Text fontSize="xs" color="gray.600">
                     Admin
                   </Text>

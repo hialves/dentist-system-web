@@ -7,7 +7,7 @@ export interface LinkItemProps {
   icon: IconType
   to: string
 }
-export const LinkItems: Array<LinkItemProps> = [
+export const LinkItemsClinic: Array<LinkItemProps> = [
   { name: 'Dashboard', icon: FiHome, to: restrict.dashboard },
   {
     name: 'Clientes',
@@ -29,5 +29,19 @@ export const LinkItems: Array<LinkItemProps> = [
     icon: FiStar,
     to: restrict.stock,
   },
+  {
+    name: 'Mudar clínica',
+    icon: FiStar,
+    to: restrict.selectClinic,
+  },
   { name: 'Configurações', icon: FiSettings, to: restrict.settings },
+]
+
+export const LinkItemsNoClinic: Array<LinkItemProps> = [
+  { name: 'Dashboard', icon: FiHome, to: restrict.dashboard },
+  {
+    name: 'Selecionar clínica',
+    icon: FiStar,
+    to: restrict.selectClinic,
+  },
 ]

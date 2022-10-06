@@ -16,6 +16,7 @@ import { AddClient } from '../pages/Restrict/Add/AddClient'
 import { AddClinic } from '../pages/Restrict/Add/AddClinic'
 import { AddEmployee } from '../pages/Restrict/Add/AddEmployee'
 import { AddStock } from '../pages/Restrict/Add/AddStock'
+import { SelectClinic } from '../pages/Restrict/Listing/SelectClinic'
 
 const Router: React.FC = () => {
   return (
@@ -29,6 +30,7 @@ const Router: React.FC = () => {
         <Route path={restrict.clientAdd} element={<AddClient />} />
         <Route path={restrict.clinic} element={<Clinics />} />
         <Route path={restrict.clinicAdd} element={<AddClinic />} />
+        <Route path={restrict.selectClinic} element={<SelectClinic />} />
         <Route path={restrict.dashboard} element={<Dashboard />} />
         <Route path={restrict.employee} element={<Employees />} />
         <Route path={restrict.employeeAdd} element={<AddEmployee />} />

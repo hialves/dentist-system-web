@@ -30,4 +30,7 @@ export const ClinicApi = {
   delete: async (id: number) => {
     return api.delete(`${prefix}/${id}`)
   },
+  getEmployeeClinics: async (employeeId: number): Promise<IClinic[]> => {
+    return api.get(`${prefix}/employee/clinics/${employeeId}`)
+  },
 }

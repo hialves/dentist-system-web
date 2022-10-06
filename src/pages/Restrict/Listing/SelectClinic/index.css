@@ -1,0 +1,7 @@
+.clinic-card {
+  cursor: 'pointer';
+}
+
+.clinic-card:hover {
+  background-color: aquamarine;
+}
