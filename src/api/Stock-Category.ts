@@ -15,7 +15,7 @@ const prefix = apiRoutes.stockCategory
 
 export const StockCategoryApi = {
   create: async (payload: { name: string | undefined }) => {
-    return api.post(`${prefix}`, payload)
+    return api.post(`${prefix}`, { names: payload.name })
   },
   findAll: async (): Promise<IStockCategory[]> => {
     return api.get(`${prefix}`)
