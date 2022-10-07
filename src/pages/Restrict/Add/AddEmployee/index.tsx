@@ -65,7 +65,7 @@ export const AddEmployee: React.FC = () => {
             autoFocus
             focusBorderColor="black"
             bgColor={'rgba(232,240,254,.6)'}
-            placeholder="Nome da colaborador"
+            placeholder="Nome do(a) colaborador(a)"
             errorBorderColor="red.300"
           />
 
