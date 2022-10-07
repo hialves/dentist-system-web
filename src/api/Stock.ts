@@ -18,8 +18,12 @@ export interface IStock {
 const prefix = apiRoutes.stock
 
 export const StockApi = {
-  create: async () => {
-    // return api.post(`${prefix}`, { names })
+  create: async (payload: {
+    name: string | undefined
+    quantity: number | undefined
+    stockCategoryId?: number | undefined
+  }) => {
+    return api.post(`${prefix}`, payload)
   },
   findAll: async (): Promise<IStock[]> => {
     return api.get(`${prefix}`)
