@@ -17,8 +17,10 @@ import { AddClinic } from '../pages/Restrict/Add/AddClinic'
 import { AddEmployee } from '../pages/Restrict/Add/AddEmployee'
 import { AddStock } from '../pages/Restrict/Add/AddStock'
 import { SelectClinic } from '../pages/Restrict/Listing/SelectClinic'
+import { AddStockCategory } from '../pages/Restrict/Add/AddStockCategory'
 
 const Router: React.FC = () => {
+  // prettier-ignore
   return (
     <Routes>
       <Route path={open.index} element={<Landing />} />
@@ -36,6 +38,10 @@ const Router: React.FC = () => {
         <Route path={restrict.employeeAdd} element={<AddEmployee />} />
         <Route path={restrict.stock} element={<Stocks />} />
         <Route path={restrict.stockAdd} element={<AddStock />} />
+        {/* TODO: settings page */}
+        <Route path={restrict.stockCategory} element={<NotFound />} />
+        {/* TODO: settings page */}
+        <Route path={restrict.stockCategoryAdd} element={<AddStockCategory />} />
         <Route path={restrict.settings} element={<Settings />} />
       </Route>
 

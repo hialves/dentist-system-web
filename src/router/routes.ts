@@ -15,6 +15,8 @@ interface IRestrict {
   employeeAdd: string
   stock: string
   stockAdd: string
+  stockCategory: string
+  stockCategoryAdd: string
   settings: string
 }
 
@@ -40,6 +42,8 @@ const routes: IRoutes = {
     employeeAdd: '/employee/add',
     stock: '/stock',
     stockAdd: '/stock/add',
+    stockCategory: '/settings/stock-category',
+    stockCategoryAdd: '/settings/stock-category/add',
     settings: '/settings',
   },
 }

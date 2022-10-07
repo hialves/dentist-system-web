@@ -14,8 +14,8 @@ export interface IStockCategory {
 const prefix = apiRoutes.stockCategory
 
 export const StockCategoryApi = {
-  create: async () => {
-    // return api.post(`${prefix}`, { names })
+  create: async (payload: { name: string | undefined }) => {
+    return api.post(`${prefix}`, payload)
   },
   findAll: async (): Promise<IStockCategory[]> => {
     return api.get(`${prefix}`)
